@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 const CommentBox = () => {
   const [comment, setComment] = useState('');
@@ -6,7 +8,7 @@ const CommentBox = () => {
   const submitSubmit = (e) => {
     e.preventDefault();
 
-    // TODO - Call an action creator
+    actions.saveComment(e.target.value);
 
     setComment('');
   };
@@ -34,4 +36,4 @@ const CommentBox = () => {
   );
 };
 
-export default CommentBox;
+export default connect(null, actions)(CommentBox);

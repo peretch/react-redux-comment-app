@@ -1,15 +1,20 @@
 import React from 'react';
-import { mount, simulate } from 'enzyme';
-
-import { Simulate } from 'react-dom/cjs/react-dom-test-utils.production.min';
+import { mount } from 'enzyme';
 import CommentBox from '../CommentBox';
+import Root from '../../Root';
 
 let wrapped;
+
+// This is for avoid error with redux
 
 // mount render the component and all his shildren.
 // mount let us modify the component after mounting it.
 beforeEach(() => {
-  wrapped = mount(<CommentBox />);
+  wrapped = mount(
+    <Root>
+      <CommentBox />
+    </Root>
+  );
 });
 
 // mount uses allways the same DOM, after each use, we should call unmount to cleanup the DOM.
