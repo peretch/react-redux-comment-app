@@ -5,20 +5,22 @@ import App from '../App';
 import CommentBox from '../CommentBox';
 import CommentList from '../CommentList';
 
-// it is a global function
-// it(<description of the test>, <function containing our test logic>)
-
-it('Shows a comment box', () => {
+let wrapped;
+// This will be executed before each test it()
+beforeEach(() => {
   // Shallow render just the given component and none of its children
   // 'wrapped' could be called perfectly 'component', is just to respect standar usage.
-  const wrapped = shallow(<App />);
+  wrapped = shallow(<App />);
+});
 
+// it is a global function
+// it(<description of the test>, <function containing our test logic>)
+it('Shows a comment box', () => {
   // expect(wrapped.find(CommentBox).length === 1).toBeTruthy();
   expect(wrapped.find(CommentBox).length).toEqual(1);
 });
 
 it('Shows a comment list', () => {
-  const wrapped = shallow(<App />);
   expect(wrapped.find(CommentList).length).toEqual(1);
 });
 
